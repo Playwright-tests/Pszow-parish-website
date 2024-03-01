@@ -37,7 +37,9 @@ public enum URLs {
     CEMENTERY_REGULATION("regulamin-cmentarza/"),
     DELEGATE_PAGE("delegat-ds-ochrony-dzieci-i-mlodziezy/"),
     ARCHDIOCESE("https://www.archidiecezjakatowicka.pl/"),
-    READING("czytania");
+    READING("czytania"),
+    FACEBOOK_PAGE("https://www.facebook.com"),
+    YOUTUBE_PAGE("https://consent.youtube.com/");
 
     private final String name;
 
