@@ -2,37 +2,73 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import qa.base.BaseTest;
 import org.testng.annotations.Test;
-import qa.pageobject.Menu;
-import qa.data.LinkData;
-import qa.dataprovider.DataProviders;
 import qa.enums.URLs;
-import qa.stepclasses.MenuSteps;
+import qa.stepclasses.MainMenuSteps;
 import io.qameta.allure.*;
 
+import java.util.function.Consumer;
+
 @Epic("E2E")
-@Feature("Main menu links tests")
+@Feature("Main menu links")
 public class MainMenuTest extends BaseTest {
 
-    private static MenuSteps menuSteps;
+    private MainMenuSteps steps;
 
     @BeforeMethod
     public void create() {
 
-        goToPage(URLs.HOME_PAGE.getName());
+        goToPage(URLs.BASE_URL.getName());
 
-        menuSteps = new MenuSteps(new Menu(getPage()));
+        steps = new MainMenuSteps(getPage());
     }
 
-    @Test(dataProvider = "mainMenu", dataProviderClass = DataProviders.class)
-    @Severity(SeverityLevel.CRITICAL)
-    public void links(LinkData data) throws IllegalAccessException {
+    private void actions(Consumer<MainMenuSteps> consumer, String url) {
 
-        Allure.description("Checking whether the page opens after clicking the '" + data.getLinkName() +  "' link.");
-        Allure.story("Clicking the '" + data.getLinkName() + "' link");
+        consumer.accept(steps);
 
-        menuSteps.clickLink(data.getData());
+        Assert.assertEquals(getPage().url(), URLs.BASE_URL.getName() + url,
+                "The page with address: " + URLs.BASE_URL.getName() + url + " has not been opened");
+    }
 
-        Assert.assertEquals(getPage().url(), data.getUrl(),
-                "The page with address: " + data.getUrl() + " has not been opened");
+    @Test
+    public void announcementsLink() {
+
+        actions(MainMenuSteps::clickAnnouncementsLink, URLs.ANNOUNCEMENTS_PAGE.getName());
+    }
+
+    @Test
+    public void intentionsLink() {
+
+        actions(MainMenuSteps::clickIntentionsLink, URLs.INTENTION_PAGE.getName());
+    }
+
+    @Test
+    public void funeralsLink() {
+
+        actions(MainMenuSteps::clickFuneralsLink, URLs.FUNERALS_PAGE.getName());
+    }
+
+    @Test
+    public void stewardsLink() {
+
+        actions(MainMenuSteps::clickStewardsLink, URLs.STEWARDS_PAGE.getName());
+    }
+
+    @Test
+    public void priestsLink() {
+
+        actions(MainMenuSteps::clickPriestsLink, URLs.PRIESTS_PAGE.getName());
+    }
+
+    @Test
+    public void confessionLink() {
+
+        actions(MainMenuSteps::clickConfessionLink, URLs.CONFESSION_PAGE.getName());
+    }
+
+    @Test
+    public void officeLink() {
+
+        actions(MainMenuSteps::clickOfficeLink, URLs.OFFICE_PAGE.getName());
     }
 }
