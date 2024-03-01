@@ -3,72 +3,79 @@ import org.testng.annotations.BeforeMethod;
 import qa.base.BaseTest;
 import org.testng.annotations.Test;
 import qa.enums.URLs;
-import qa.stepclasses.MainMenuSteps;
 import io.qameta.allure.*;
+import qa.pageobject.MainMenu;
 
 import java.util.function.Consumer;
 
 @Epic("E2E")
-@Feature("Main menu links")
+@Feature("The main menu links")
 public class MainMenuTest extends BaseTest {
 
-    private MainMenuSteps steps;
+    private MainMenu mainMenu;
 
     @BeforeMethod
     public void create() {
 
         goToPage(URLs.BASE_URL.getName());
 
-        steps = new MainMenuSteps(getPage());
+        mainMenu = new MainMenu(getPage());
     }
 
-    private void actions(Consumer<MainMenuSteps> consumer, String url) {
+    private void actions(Consumer<MainMenu> consumer, String url) {
 
-        consumer.accept(steps);
+        consumer.accept(mainMenu);
 
         Assert.assertEquals(getPage().url(), URLs.BASE_URL.getName() + url,
                 "The page with address: " + URLs.BASE_URL.getName() + url + " has not been opened");
     }
 
     @Test
+    @Description("The \"Ogłoszenia duszpasterskie\" link")
     public void announcementsLink() {
 
-        actions(MainMenuSteps::clickAnnouncementsLink, URLs.ANNOUNCEMENTS_PAGE.getName());
+        actions(MainMenu::clickAnnouncementsLink, URLs.ANNOUNCEMENTS_PAGE.getName());
     }
 
     @Test
+    @Description("The \"Intencje mszalne\" link")
     public void intentionsLink() {
 
-        actions(MainMenuSteps::clickIntentionsLink, URLs.INTENTION_PAGE.getName());
+        actions(MainMenu::clickIntentionsLink, URLs.INTENTION_PAGE.getName());
     }
 
     @Test
+    @Description("The \"Pogrzeby\" link")
     public void funeralsLink() {
 
-        actions(MainMenuSteps::clickFuneralsLink, URLs.FUNERALS_PAGE.getName());
+        actions(MainMenu::clickFuneralsLink, URLs.FUNERALS_PAGE.getName());
     }
 
     @Test
+    @Description("The \"Szafarze\" link")
     public void stewardsLink() {
 
-        actions(MainMenuSteps::clickStewardsLink, URLs.STEWARDS_PAGE.getName());
+        actions(MainMenu::clickStewardsLink, URLs.STEWARDS_PAGE.getName());
     }
 
     @Test
+    @Description("The \"Duszpasterze\" link")
     public void priestsLink() {
 
-        actions(MainMenuSteps::clickPriestsLink, URLs.PRIESTS_PAGE.getName());
+        actions(MainMenu::clickPriestsLink, URLs.PRIESTS_PAGE.getName());
     }
 
     @Test
+    @Description("The \"Spowiedź\" link")
     public void confessionLink() {
 
-        actions(MainMenuSteps::clickConfessionLink, URLs.CONFESSION_PAGE.getName());
+        actions(MainMenu::clickConfessionLink, URLs.CONFESSION_PAGE.getName());
     }
 
     @Test
+    @Description("The \"Kancelaria\" link")
     public void officeLink() {
 
-        actions(MainMenuSteps::clickOfficeLink, URLs.OFFICE_PAGE.getName());
+        actions(MainMenu::clickOfficeLink, URLs.OFFICE_PAGE.getName());
     }
 }
