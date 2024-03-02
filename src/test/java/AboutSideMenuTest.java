@@ -27,8 +27,8 @@ public class AboutSideMenuTest extends BaseTest {
 
         consumer.accept(aboutSideMenu);
 
-        Assert.assertEquals(getPage().url(), URLs.BASE_URL.getName() + url,
-                "The page with address: " + URLs.BASE_URL.getName() + url + " has not been opened");
+        Assert.assertEquals(getPage().url(), url,
+                "The page with address: " + url + " has not been opened");
     }
 
     @Test

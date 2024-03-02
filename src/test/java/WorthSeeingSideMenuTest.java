@@ -23,8 +23,8 @@ public class WorthSeeingSideMenuTest extends BaseTest {
 
         consumer.accept(worthSeeingSideMenu);
 
-        Assert.assertEquals(getPage().url(), URLs.BASE_URL.getName() + url,
-                "The page with address: " + URLs.BASE_URL.getName() + url + " has not been opened");
+        Assert.assertEquals(getPage().url(), url,
+                "The page with address: " + url + " has not been opened");
     }
 
     @Test
@@ -52,19 +52,13 @@ public class WorthSeeingSideMenuTest extends BaseTest {
     @Description("The \"Archidiecezja Katowicka\" link")
     public void archdioceseLink() {
 
-        worthSeeingSideMenu.clickArchdioceseLink();
-
-        Assert.assertEquals(getPage().url(), URLs.ARCHDIOCESE.getName(),
-                "The page with address: " + URLs.ARCHDIOCESE.getName() + " has not been opened");
+        actions(WorthSeeingSideMenu::clickArchdioceseLink, URLs.ARCHDIOCESE.getName());
     }
 
     @Test
     @Description("The \"Czytania liturgiczne\" link")
     public void readingLink() {
 
-        worthSeeingSideMenu.clickReadingLink();
-
-        Assert.assertEquals(getPage().url(), URLs.READING.getName(),
-                "The page with address: " + URLs.READING.getName() + " has not been opened");
+        actions(WorthSeeingSideMenu::clickReadingLink, URLs.READING.getName());
     }
 }
