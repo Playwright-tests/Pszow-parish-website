@@ -4,74 +4,70 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.base.BaseTest;
 import qa.pageobject.SearchEngine;
-import qa.pageobject.SearchResults;
-import qa.data.Phrase;
+import qa.pageobject.SearchResultsPage;
 import qa.dataprovider.DataProviders;
 import qa.enums.URLs;
-import qa.stepclasses.SearchEngineSteps;
-
+import qa.utils.DataProviderNames;
 
 @Epic("E2E")
-@Feature("Search engine tests")
+@Feature("Search engine")
 public class SearchEngineTest extends BaseTest {
-
-    private SearchEngineSteps searchEngineSteps;
-    private SearchResults searchResults;
+    private SearchEngine searchEngine;
+    private SearchResultsPage searchResultsPage;
 
     @BeforeMethod
     public void create() {
 
-        goToPage(URLs.HOME_PAGE.getName());
+        goToPage(URLs.BASE_URL.getName());
 
-        searchEngineSteps = new SearchEngineSteps(new SearchEngine(getPage()));
-        searchResults = new SearchResults(getPage());
+        searchEngine = new SearchEngine(getPage());
+        searchResultsPage = new SearchResultsPage(getPage());
     }
 
-    private void fill(String phrase) {
+    private void actions(String phrase) {
 
-        searchEngineSteps.clickIcon();
-        searchEngineSteps.enterPhrase(phrase);
-        searchEngineSteps.pressTheEnterKey();
-    }
-    private int getNumberOfArticles() {
-
-        return getPage().querySelectorAll("[id^='post-']").size();
+        searchEngine.clickIcon();
+        searchEngine.setPhrase(phrase);
+        searchEngine.submit();
     }
 
     @Test(priority = 1)
-    @Severity(SeverityLevel.CRITICAL)
-    @Description("Checking whether the search field will be visible after clicking the search engine icon")
-    @Epic("Checking the search field visibility")
     public void searchFieldVisibility() {
 
-        searchEngineSteps.clickIcon();
+        searchEngine.clickIcon();
 
-        Assert.assertTrue(searchEngineSteps.getSearchEngine().getSearchField().isVisible());
+        Assert.assertTrue(searchEngine.getSearchField().isVisible());
     }
 
-    @Test(priority = 2, dataProvider = "correctPhrase", dataProviderClass = DataProviders.class)
-    @Severity(SeverityLevel.CRITICAL)
-    public void correctPhrase(Phrase phrase) {
+    @Test
+    public void inputTextVerification() {
 
-        Allure.description("Checking whether articles will be found after searching with '" + phrase.getPhrase() + "' as the correct phrase");
-        Allure.story("Searching with a correct phrase");
+        String text = "Example";
+        searchEngine.clickIcon();
+        searchEngine.setPhrase(text);
 
-        fill(phrase.getPhrase());
-
-        Assert.assertTrue(getNumberOfArticles() > 0);
-        Assert.assertNotEquals(searchResults.getTextContent(), phrase.getMessage());
+        Assert.assertEquals(searchEngine.getText(), text, "Incorrect input");
     }
 
-    @Test(priority = 3, dataProvider = "incorrectPhrase", dataProviderClass = DataProviders.class)
-    @Severity(SeverityLevel.CRITICAL)
-    public void incorrectPhrase(Phrase phrase) {
+    @Test(priority = 2, dataProvider = DataProviderNames.CORRECT, dataProviderClass = DataProviders.class)
+    public void correctPhrase(String phrase) {
 
-        Allure.description("Checking whether articles will be found after searching with '" + phrase.getPhrase() + "' as the incorrect phrase");
-        Allure.story("Searching with an incorrect phrase");
+        actions(phrase);
+        getPage().waitForSelector(searchResultsPage.getPageHeaderTitleSelector());
+        searchResultsPage.findArticles();
 
-        fill(phrase.getPhrase());
+        Assert.assertTrue(searchResultsPage.getFoundArticlesCount() > 0, "No found articles");
+        Assert.assertFalse(searchResultsPage.isNoContentMessageVisible(), "The message about no articles found is visible");
+    }
 
-        Assert.assertFalse(getNumberOfArticles() > 0);
-        Assert.assertEquals(searchResults.getTextContent(), phrase.getMessage());
+    @Test(priority = 3, dataProvider = DataProviderNames.INCORRECT, dataProviderClass = DataProviders.class)
+    public void incorrectPhrase(String phrase) {
+
+        actions(phrase);
+        getPage().waitForSelector(searchResultsPage.getPageHeaderTitleSelector());
+        searchResultsPage.findArticles();
+
+        Assert.assertFalse(searchResultsPage.getFoundArticlesCount() > 0, "Articles have been found");
+        Assert.assertTrue(searchResultsPage.isNoContentMessageVisible(), "The message about no articles found is not visible");
     }
 }
