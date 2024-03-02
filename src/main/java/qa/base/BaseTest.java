@@ -2,25 +2,26 @@ package qa.base;
 
 import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Page;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+import org.json.simple.parser.ParseException;
+import org.testng.annotations.*;
+import qa.jsonreader.TestdataLoader;
 import qa.playwright.PlaywrightBrowserLauncher;
 import qa.playwright.PlaywrightProvider;
 import qa.enums.BrowserType;
-import qa.jsonreader.JSONReader;
 
 import java.io.IOException;
-
 
 public class BaseTest {
 
     private PlaywrightBrowserLauncher launcher;
 
+    @Parameters("fileName")
     @BeforeClass
-    public void readJSONFile() throws IOException {
+    public void readTestData(@Optional("noFileName") String fileName) throws IOException, ParseException {
 
-        JSONReader.read();
+        if (!fileName.equals("noFileName")) {
+            TestdataLoader.load(fileName);
+        }
     }
 
     @BeforeMethod
