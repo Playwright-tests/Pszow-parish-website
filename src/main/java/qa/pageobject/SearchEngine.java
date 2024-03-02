@@ -16,16 +16,19 @@ public class SearchEngine extends BasePage {
         searchField = page.locator("#ocean-search-form-1");
     }
 
+    @io.qameta.allure.Step("Click the icon")
     public void clickIcon() {
 
         icon.click();
     }
 
+    @io.qameta.allure.Step("Enter the phrase")
     public void setPhrase(String phrase) {
 
         searchField.fill(phrase);
     }
 
+    @io.qameta.allure.Step("Press the ENTER key")
     public void submit() {
 
         searchField.press("Enter");
@@ -34,5 +37,10 @@ public class SearchEngine extends BasePage {
     public Locator getSearchField() {
 
         return searchField;
+    }
+
+    public String getText() {
+
+        return searchField.innerText();
     }
 }
