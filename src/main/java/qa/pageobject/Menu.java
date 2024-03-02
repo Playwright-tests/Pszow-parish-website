@@ -10,7 +10,7 @@ public class Menu extends BasePage {
         super(page);
     }
 
-    public void click(String id) throws IllegalAccessException {
+    public void clickLink(String id) {
 
         getPage().locator("#" + id).click();
     }
