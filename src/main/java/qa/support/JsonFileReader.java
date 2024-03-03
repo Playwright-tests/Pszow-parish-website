@@ -1,4 +1,4 @@
-package qa.jsonreader;
+package qa.support;
 
 import lombok.Getter;
 import org.json.simple.parser.JSONParser;
@@ -8,7 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 
-public class TestdataLoader {
+public class JsonFileReader {
 
     private static final String path = "./src/test/resources/testdata/";
 
