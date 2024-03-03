@@ -2,48 +2,31 @@ package qa.dataprovider;
 
 import org.testng.annotations.DataProvider;
 import qa.jsonreader.JSONReader;
+import qa.utils.DataProviderNames;
 
 public class DataProviders {
 
-    @DataProvider(name = "mainMenu")
-    public Object[] mainMenu() {
+    @DataProvider(name = DataProviderNames.EXPANDED)
+    public Object[] expanded() {
 
-        return JSONReader.getLinksData("mainMenu");
+        return JSONReader.getGalleryButtonNames(DataProviderNames.EXPANDED);
     }
 
-    @DataProvider(name = "sideMenu")
-    public Object[] sideMenu() {
+    @DataProvider(name = DataProviderNames.COLLAPSED)
+    public Object[] collapsed() {
 
-        return JSONReader.getLinksData("sideMenu");
+        return JSONReader.getGalleryButtonNames(DataProviderNames.COLLAPSED);
     }
 
-    @DataProvider(name = "media")
-    public Object[] media() {
-
-        return JSONReader.getLinksData("media");
-    }
-
-    @DataProvider(name = "GAL_alwaysExpanded")
-    public Object[] GAL_alwaysExpanded() {
-
-        return JSONReader.getGalleryButtonNames("alwaysExpanded");
-    }
-
-    @DataProvider(name = "GAL_alwaysClosed")
-    public Object[] GAL_alwaysClosed() {
-
-        return JSONReader.getGalleryButtonNames("alwaysClosed");
-    }
-
-    @DataProvider(name = "correctPhrase")
+    @DataProvider(name = DataProviderNames.CORRECT)
     public Object[] correctPhrase() {
 
-        return JSONReader.getPhrases("correct");
+        return JSONReader.getPhrases(DataProviderNames.CORRECT);
     }
 
-    @DataProvider(name = "incorrectPhrase")
+    @DataProvider(name = DataProviderNames.INCORRECT)
     public Object[] incorrectPhrase() {
 
-        return  JSONReader.getPhrases("incorrect");
+        return  JSONReader.getPhrases(DataProviderNames.INCORRECT);
     }
 }
