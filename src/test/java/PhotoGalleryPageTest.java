@@ -1,59 +1,61 @@
+import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.WaitForSelectorState;
 import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.base.BaseTest;
+import qa.models.ItemData;
+import qa.dataprovider.DataProviders;
 import qa.enums.URLs;
-import qa.pageobject.Item;
 import qa.pageobject.PhotoGalleryPage;
-import qa.utils.AssertionUtils;
-import qa.utils.Results;
-
-import java.util.ArrayList;
-import java.util.List;
-
+import qa.support.DataProviderNames;
 
 @Epic("E2E")
 @Feature("Photo gallery page buttons tests")
 public class PhotoGalleryPageTest extends BaseTest {
 
     private PhotoGalleryPage photoGalleryPage;
-    private List<Results> results;
 
     @BeforeMethod
     public void create() {
 
         goToPage(URLs.PHOTO_GALLERY.getName());
         photoGalleryPage = new PhotoGalleryPage(getPage());
-        photoGalleryPage.findItems();
-        results = new ArrayList<>();
     }
 
-    private boolean checkLocatorVisibility(Item item, boolean isExpanded) {
+    private void waitForSelectorVisible(String selector) {
 
-        if (item.getGalleryContentLocator().isVisible() != isExpanded) {
-            results.add(new Results("Item [" + item.getTitle() + "] is expanded",
-                    isExpanded, !isExpanded));
-            return false;
+        try {
+            Page.WaitForSelectorOptions options = new Page.WaitForSelectorOptions()
+                    .setState(WaitForSelectorState.VISIBLE)
+                    .setTimeout(2000);
+            getPage().waitForSelector(selector, options);
+        } catch (Exception e) {
+            Assert.fail("The selector \""+ selector + "\" is hidden");
         }
-
-        return true;
     }
 
-    @Test
-    public void expandingAndCollapsing() {
+    private void waitForSelectorHidden(String selector) {
 
-        for (int i = 1; i < photoGalleryPage.getItemsCount(); i++) {
-
-            photoGalleryPage.getItem(i).clickIconClosed();
-            boolean isExpanded = checkLocatorVisibility(photoGalleryPage.getItem(i), true);
-
-            if (isExpanded) {
-                photoGalleryPage.getItem(i).clickIconOpened();
-                checkLocatorVisibility(photoGalleryPage.getItem(i), false);
-            }
+        try {
+            Page.WaitForSelectorOptions options = new Page.WaitForSelectorOptions()
+                    .setState(WaitForSelectorState.HIDDEN)
+                    .setTimeout(2000);
+            getPage().waitForSelector(selector, options);
+        } catch (Exception e) {
+            Assert.fail("The selector \"" + selector + "\" is visible");
         }
+    }
 
-        Assert.assertTrue(results.isEmpty(), AssertionUtils.formatAssertionMessage(results));
+    @Test(dataProvider = DataProviderNames.ITEMS, dataProviderClass = DataProviders.class)
+    public void expandingAndCollapsing(ItemData itemData) throws InterruptedException {
+
+        photoGalleryPage.clickButton(itemData.getName());
+        waitForSelectorVisible(itemData.getTabContent());
+        Assert.assertTrue(getPage().locator(itemData.getTabContent()).isVisible(), "The content is not visible");
+        photoGalleryPage.clickButton(itemData.getName());
+        waitForSelectorHidden(itemData.getTabContent());
+        Assert.assertFalse(getPage().locator(itemData.getTabContent()).isVisible(), "The content is visible");
     }
 }
