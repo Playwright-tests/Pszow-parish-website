@@ -15,24 +15,28 @@ public class SacramentsSideMenu extends Menu {
     }
 
     @io.qameta.allure.Step("Click the \"Chrzest\" link")
+    @io.qase.api.annotation.Step("Click the \"Chrzest\" link")
     public void clickChristeningLink() {
 
         clickLink(CHRISTENING_SELECTOR);
     }
 
     @io.qameta.allure.Step("Click the \"Pierwsza Komunia\" link")
+    @io.qase.api.annotation.Step("Click the \"Pierwsza Komunia\" link")
     public void clickFirstCommunionLink() {
 
         clickLink(FIRST_COMMUNION_SELECTOR);
     }
 
     @io.qameta.allure.Step("Click the \"Bierzmowanie\" link")
+    @io.qase.api.annotation.Step("Click the \"Bierzmowanie\" link")
     public void clickConfirmationLink() {
 
         clickLink(CONFIRMATION_SELECTOR);
     }
 
-    @io.qameta.allure.Step("Click the \"Małżeństwot\" link")
+    @io.qameta.allure.Step("Click the \"Małżeństwo\" link")
+    @io.qase.api.annotation.Step("Click the \"Małżeństwo\" link")
     public void clickMarriageLink() {
 
         clickLink(MARRIAGE_SELECTOR);
