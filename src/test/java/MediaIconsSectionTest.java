@@ -37,6 +37,7 @@ public class MediaIconsSectionTest extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.CRITICAL)
     @Description("The Facebook icon")
     @QaseId(2)
     @QaseTitle("The Facebook icon")
@@ -46,6 +47,7 @@ public class MediaIconsSectionTest extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.CRITICAL)
     @Description("The Youtube icon")
     @QaseId(3)
     @QaseTitle("The Youtube icon")
