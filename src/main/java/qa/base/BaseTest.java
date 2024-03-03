@@ -4,7 +4,7 @@ import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Page;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.*;
-import qa.jsonreader.TestdataLoader;
+import qa.support.JsonFileReader;
 import qa.playwright.PlaywrightBrowserLauncher;
 import qa.playwright.PlaywrightProvider;
 import qa.enums.BrowserType;
@@ -20,7 +20,7 @@ public class BaseTest {
     public void readTestData(@Optional("noFileName") String fileName) throws IOException, ParseException {
 
         if (!fileName.equals("noFileName")) {
-            TestdataLoader.load(fileName);
+            JsonFileReader.load(fileName);
         }
     }
 
