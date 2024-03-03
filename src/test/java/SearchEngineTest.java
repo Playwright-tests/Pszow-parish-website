@@ -7,7 +7,7 @@ import qa.pageobject.SearchEngine;
 import qa.pageobject.SearchResultsPage;
 import qa.dataprovider.DataProviders;
 import qa.enums.URLs;
-import qa.utils.DataProviderNames;
+import qa.support.DataProviderNames;
 
 @Epic("E2E")
 @Feature("Search engine")
