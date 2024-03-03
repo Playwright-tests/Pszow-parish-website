@@ -20,12 +20,14 @@ public class MediaIconsSection extends BasePage {
     }
 
     @io.qameta.allure.Step("Click the Facebook icon")
+    @io.qase.api.annotation.Step("Click the Facebook icon")
     public void clickFacebookIcon() {
 
         clickIcon(FACEBOOK_NAME);
     }
 
     @io.qameta.allure.Step("Click the Youtube icon")
+    @io.qase.api.annotation.Step("Click the Youtube icon")
     public void clickYoutubeIcon() {
 
         clickIcon(YOUTUBE_NAME);
