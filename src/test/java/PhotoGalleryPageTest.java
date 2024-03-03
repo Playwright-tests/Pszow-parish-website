@@ -1,55 +1,59 @@
-import com.microsoft.playwright.Locator;
-import com.microsoft.playwright.Page;
-import com.microsoft.playwright.options.AriaRole;
 import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.base.BaseTest;
-import qa.dataprovider.DataProviders;
 import qa.enums.URLs;
-import qa.pageobject.GalleryPage;
-import qa.stepclasses.GalleryPageSteps;
+import qa.pageobject.Item;
+import qa.pageobject.PhotoGalleryPage;
+import qa.utils.AssertionUtils;
+import qa.utils.Results;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Epic("E2E")
 @Feature("Photo gallery page buttons tests")
 public class PhotoGalleryPageTest extends BaseTest {
 
-    private GalleryPageSteps galleryPageSteps;
+    private PhotoGalleryPage photoGalleryPage;
+    private List<Results> results;
 
     @BeforeMethod
     public void create() {
 
         goToPage(URLs.PHOTO_GALLERY.getName());
-
-        galleryPageSteps = new GalleryPageSteps(new GalleryPage(getPage()));
+        photoGalleryPage = new PhotoGalleryPage(getPage());
+        photoGalleryPage.findItems();
+        results = new ArrayList<>();
     }
 
-    @Test(dataProvider = "GAL_alwaysExpanded", dataProviderClass = DataProviders.class)
-    @Severity(SeverityLevel.NORMAL)
-    @Description("Checking whether the photo gallery of  is always expanded")
-    @Story("")
-    public void alwaysExpanded(String name) {
+    private boolean checkLocatorVisibility(Item item, boolean isExpanded) {
 
-        Allure.description("Checking whether the photo gallery of " + name + " year is always expanded");
-        Allure.story("Checking the gallery of " + name + " year");
+        if (item.getGalleryContentLocator().isVisible() != isExpanded) {
+            results.add(new Results("Item [" + item.getTitle() + "] is expanded",
+                    isExpanded, !isExpanded));
+            return false;
+        }
 
-        Locator region = getPage().getByRole(AriaRole.REGION, new Page.GetByRoleOptions().setName(name));
-        Assert.assertTrue(region.isVisible());
+        return true;
     }
 
-    @Test(dataProvider = "GAL_alwaysClosed", dataProviderClass = DataProviders.class)
-    @Severity(SeverityLevel.NORMAL)
-    public void alwaysClosed(String name) {
+    @Test
+    public void expandingAndCollapsing() {
 
-        Allure.description("Checking whether the photo gallery list will be expanded after clicking the '" + name + "' button");
-        Allure.story("Clicking the '" + name + "' button");
+        for (int i = 1; i < photoGalleryPage.getItemsCount(); i++) {
 
-        Locator region = getPage().getByRole(AriaRole.REGION, new Page.GetByRoleOptions().setName(name));
-        Assert.assertFalse(region.isVisible());
+            photoGalleryPage.getItem(i).clickIconClosed();
+            boolean isExpanded = checkLocatorVisibility(photoGalleryPage.getItem(i), true);
 
-        galleryPageSteps.clickButton(name);
-        Assert.assertTrue(region.isVisible());
+            if (isExpanded) {
+                photoGalleryPage.getItem(i).clickIconOpened();
+                checkLocatorVisibility(photoGalleryPage.getItem(i), false);
+            }
+        }
+
+        Assert.assertTrue(results.isEmpty(), AssertionUtils.formatAssertionMessage(results));
     }
 }
