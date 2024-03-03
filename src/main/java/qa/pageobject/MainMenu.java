@@ -18,42 +18,49 @@ public class MainMenu extends Menu {
     }
 
     @io.qameta.allure.Step("Click the \"Ogłoszenia duszpasterskie\" link")
+    @io.qase.api.annotation.Step("Click the \"Ogłoszenia duszpasterskie\" link")
     public void clickAnnouncementsLink() {
 
         clickLink(ANNOUNCEMENTS_SELECTOR);
     }
 
     @io.qameta.allure.Step("Click the \"Intencje mszalne\" link")
+    @io.qase.api.annotation.Step("Click the \"Intencje mszalne\" link")
     public void clickIntentionsLink() {
 
         clickLink(INTENTIONS_SELECTOR);
     }
 
     @io.qameta.allure.Step("Click the\"Pogrzeby\" link")
+    @io.qase.api.annotation.Step("Click the\"Pogrzeby\" link")
     public void clickFuneralsLink() {
 
         clickLink(FUNERALS_SELECTOR);
     }
 
     @io.qameta.allure.Step("Click the \"Szafarze\" link")
+    @io.qase.api.annotation.Step("Click the \"Szafarze\" link")
     public void clickStewardsLink() {
 
         clickLink(STEWARDS_SELECTOR);
     }
 
-    @io.qameta.allure.Step("Click the \"Kapłani\" link")
+    @io.qameta.allure.Step("Click the \"Duszpasterze\" link")
+    @io.qase.api.annotation.Step("Click the \"Duszpasterze\" link")
     public void clickPriestsLink() {
 
         clickLink(PRIESTS_SELECTOR);
     }
 
-    @io.qameta.allure.Step("Click the \"Spowiedź w bazylice\" link")
+    @io.qameta.allure.Step("Click the \"Spowiedź\" link")
+    @io.qase.api.annotation.Step("Click the \"Spowiedź\" link")
     public void clickConfessionLink() {
 
         clickLink(CONFESSION_SELECTOR);
     }
 
     @io.qameta.allure.Step("Click the \"Kancelaria\" link")
+    @io.qase.api.annotation.Step("Click the \"Kancelaria\" link")
     public void clickOfficeLink() {
 
         clickLink(OFFICE_SELECTOR);
