@@ -37,9 +37,10 @@ public enum URLs {
     CEMENTERY_REGULATION("https://bazylika-pszow.pl/regulamin-cmentarza/"),
     DELEGATE_PAGE("https://bazylika-pszow.pl/delegat-ds-ochrony-dzieci-i-mlodziezy/"),
     ARCHDIOCESE("https://www.archidiecezjakatowicka.pl/"),
-    READING("czytania"),
+    READING("https://www.paulus.org.pl/czytania"),
     FACEBOOK_PAGE("https://www.facebook.com"),
-    YOUTUBE_PAGE("https://consent.youtube.com/");
+    YOUTUBE_PAGE("https://consent.youtube.com/"),
+    YOUTUBE_TRANSMISSION("https://www.youtube.com/watch");
 
     private final String name;
 
