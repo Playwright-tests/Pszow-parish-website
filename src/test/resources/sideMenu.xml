@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="Side menu tests">
+<suite name="Side menu">
 
     <listeners>
         <listener class-name="qa.listeners.Listener"/>
     </listeners>
 
-    <test verbose="2" name="Side menu functionalities">
+    <test verbose="2" name="The 'O Parafii' side menu links">
         <classes>
-            <class name="SideMenuTest"/>
+            <class name="sidemenu.AboutSideMenuTest"/>
+        </classes>
+    </test>
+    <test name="The 'Sakramenty Święte' side menu links">
+        <classes>
+            <class name="sidemenu.SacramentsSideMenuTest"/>
+        </classes>
+    </test>
+    <test name="The 'Duszpasterstwo' side menu links">
+        <classes>
+            <class name="sidemenu.MinistrySideMenuTest"/>
+        </classes>
+    </test>
+    <test name="The 'Warto zobaczyć' side menu links">
+        <classes>
+            <class name="sidemenu.WorthSeeingSideMenuTest"/>
         </classes>
     </test>
 </suite>
