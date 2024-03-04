@@ -9,7 +9,7 @@
 
     <test verbose="2" name="Main menu links">
         <classes>
-            <class name="MainMenuTest"/>
+            <class name="mainmenu.MainMenuTest"/>
         </classes>
     </test>
 </suite>
