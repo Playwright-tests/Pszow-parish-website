@@ -1,6 +1,4 @@
-import io.qameta.allure.Description;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.*;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
@@ -12,6 +10,8 @@ import qa.pageobject.SacramentsSideMenu;
 
 import java.util.function.Consumer;
 
+@Epic("E2E")
+@Feature("The \"Sakramenty Święte\" side menu links")
 public class SacramentsSideMenuTest extends BaseTest {
 
     private SacramentsSideMenu sacramentsSideMenu;
