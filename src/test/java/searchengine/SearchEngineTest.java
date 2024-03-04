@@ -1,4 +1,8 @@
+package searchengine;
+
 import io.qameta.allure.*;
+import io.qase.api.annotation.QaseId;
+import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -8,6 +12,7 @@ import qa.pageobject.SearchResultsPage;
 import qa.dataprovider.DataProviders;
 import qa.enums.URLs;
 import qa.support.DataProviderNames;
+import qa.support.WaitForSelector;
 
 @Epic("E2E")
 @Feature("Search engine")
@@ -32,14 +37,24 @@ public class SearchEngineTest extends BaseTest {
     }
 
     @Test(priority = 1)
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("The search field visibility")
+    @QaseId(40)
+    @QaseTitle("The search field visibility")
     public void searchFieldVisibility() {
 
         searchEngine.clickIcon();
-
-        Assert.assertTrue(searchEngine.getSearchField().isVisible());
+        WaitForSelector.visible(getPage(), searchEngine.getSearchFieldSelector());
+        searchEngine.clickIcon();
+        WaitForSelector.hidden(getPage(), searchEngine.getSearchFieldSelector());
     }
 
+
     @Test
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Text input verification")
+    @QaseId(41)
+    @QaseTitle("Text input verification")
     public void inputTextVerification() {
 
         String text = "Example";
@@ -50,6 +65,10 @@ public class SearchEngineTest extends BaseTest {
     }
 
     @Test(priority = 2, dataProvider = DataProviderNames.CORRECT, dataProviderClass = DataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Searching with a correct phrase")
+    @QaseId(42)
+    @QaseTitle("Searching with a correct phrase")
     public void correctPhrase(String phrase) {
 
         actions(phrase);
@@ -61,6 +80,10 @@ public class SearchEngineTest extends BaseTest {
     }
 
     @Test(priority = 3, dataProvider = DataProviderNames.INCORRECT, dataProviderClass = DataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Searching with an incorrect phrase")
+    @QaseId(43)
+    @QaseTitle("Searching with an incorrect phrase")
     public void incorrectPhrase(String phrase) {
 
         actions(phrase);
