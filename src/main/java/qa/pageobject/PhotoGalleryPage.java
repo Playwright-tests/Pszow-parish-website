@@ -13,7 +13,9 @@ public class PhotoGalleryPage extends BasePage {
         super(page);
     }
 
-    public void clickButton(String name) {
+    @io.qameta.allure.Step("Click the trigger element")
+    @io.qase.api.annotation.Step("Click the trigger element")
+    public void clickTriggerElement(String name) {
 
         getPage()
                 .locator(ELEMENTOR_ACCORDION_SELECTOR)
