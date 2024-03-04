@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="Search engine tests">
+<suite name="Search engine">
 
     <listeners>
         <listener class-name="qa.listeners.Listener"/>
     </listeners>
 
+    <parameter name="fileName" value="PP_Phrases.json"/>
+
     <test verbose="2" name="Search engine functionalities">
         <classes>
-            <class name="SearchEngineTest"/>
+            <class name="searchengine.SearchEngineTest"/>
         </classes>
     </test>
 </suite>
