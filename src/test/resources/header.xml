@@ -8,12 +8,12 @@
 
     <test verbose="2" name="The logo">
         <classes>
-            <class name="LogoTest"/>
+            <class name="header.LogoTest"/>
         </classes>
     </test>
     <test verbose="2" name="Media icons">
         <classes>
-            <class name="MediaIconsSectionTest"/>
+            <class name="header.MediaIconsSectionTest"/>
         </classes>
     </test>
 </suite>
