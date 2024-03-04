@@ -1,3 +1,5 @@
+package sidemenu;
+
 import io.qameta.allure.*;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;

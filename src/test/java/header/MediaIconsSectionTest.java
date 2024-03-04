@@ -1,3 +1,5 @@
+package header;
+
 import com.microsoft.playwright.Page;
 import io.qameta.allure.*;
 
