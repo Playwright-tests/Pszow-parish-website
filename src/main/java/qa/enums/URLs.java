@@ -15,7 +15,6 @@ public enum URLs {
     HISTORY_PAGE("https://bazylika-pszow.pl/historia-parafii/"),
     CALVARY_PAGE("https://bazylika-pszow.pl/kalwaria-pszowska/"),
     PILGRIMAGES_PAGE("https://bazylika-pszow.pl/pielgrzymki/"),
-    PHOTO_GALLERY_PAGE("https://bazylika-pszow.pl/galeria-zdjec/"),
     FILM_GALLERY_PAGE("https://bazylika-pszow.pl/galeria-filmow/"),
     SUPPORT_PAGE("https://bazylika-pszow.pl/wsparcie-parafii/"),
     CHRISTENING_PAGE("https://bazylika-pszow.pl/sakramenty/"),
@@ -40,7 +39,8 @@ public enum URLs {
     READING("https://www.paulus.org.pl/czytania"),
     FACEBOOK_PAGE("https://www.facebook.com"),
     YOUTUBE_PAGE("https://consent.youtube.com/"),
-    YOUTUBE_TRANSMISSION("https://www.youtube.com/watch");
+    YOUTUBE_TRANSMISSION("https://www.youtube.com/watch"),
+    NEWS_PAGE("https://bazylika-pszow.pl/category/aktualnosci/");
 
     private final String name;
 
