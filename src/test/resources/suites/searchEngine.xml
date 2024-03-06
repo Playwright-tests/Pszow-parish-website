@@ -18,7 +18,7 @@
             </class>
         </classes>
     </test>
-    <test verbose="2" name="Input text verification">
+    <test verbose="2" name="Text input verification">
         <classes>
             <class name="searchengine.SearchEngineTest">
                 <methods>
@@ -27,7 +27,7 @@
             </class>
         </classes>
     </test>
-    <test verbose="2" name="Searchimg with a correct phrase">
+    <test verbose="2" name="Searching with a correct phrase">
         <classes>
             <class name="searchengine.SearchEngineTest">
                 <methods>
