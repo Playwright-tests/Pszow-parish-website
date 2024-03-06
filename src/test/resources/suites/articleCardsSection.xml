@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Article cards section">
+
+    <listeners>
+        <listener class-name="qa.listeners.Listener"/>
+    </listeners>
+
+    <test name="The 'Zobacz więcej aktualności ...' link">
+        <classes>
+            <class name="articlecards.ArticleCardsSectionTest"/>
+        </classes>
+    </test>
+
+</suite>
