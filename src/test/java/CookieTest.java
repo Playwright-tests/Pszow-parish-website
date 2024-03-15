@@ -21,7 +21,7 @@ public class CookieTest extends BaseTest {
     @BeforeMethod
     public void init() {
 
-        goToPage(URLs.HOME_PAGE.getName());
+        goToPage(URLs.BASE_URL.getName());
     }
 
     private List<Cookie> getCookies() {
