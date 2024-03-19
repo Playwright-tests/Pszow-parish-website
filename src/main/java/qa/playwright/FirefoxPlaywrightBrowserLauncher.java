@@ -9,8 +9,8 @@ public class FirefoxPlaywrightBrowserLauncher extends PlaywrightBrowserLauncher 
     protected void setBrowser() {
 
         browser = playwright
-                .chromium()
-                .launch(new BrowserType.LaunchOptions().setChannel("chrome").setHeadless(true).setSlowMo(50));
+                .firefox()
+                .launch(new BrowserType.LaunchOptions().setHeadless(true).setSlowMo(50));
 
         setBrowserInfo();
     }
