@@ -27,7 +27,18 @@ public class BaseTest {
     @BeforeMethod
     public void launch() {
 
-        launcher = PlaywrightProvider.getFactory(BrowserType.CHROME);
+        String browserType = System.getenv("BROWSER_TYPE");
+
+        BrowserType type =
+
+                switch (browserType) {
+                    case "chrome"-> BrowserType.CHROME;
+                    case "firefox"-> BrowserType.FIREFOX;
+                    case "edge"-> BrowserType.EDGE;
+                    default -> throw new IllegalStateException("Unexpected value: " + browserType);
+                };
+
+        launcher = PlaywrightProvider.getFactory(type);
         launcher.create();
     }
 
