@@ -4,14 +4,18 @@ import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
+import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public abstract class PlaywrightBrowserLauncher {
 
     protected Playwright playwright;
+    @Getter
     protected Browser browser;
+    @Getter
     protected BrowserContext browserContext;
+    @Getter
     protected Page page;
     private final Logger logger = LoggerFactory.getLogger(PlaywrightBrowserLauncher.class);
 
@@ -50,21 +54,6 @@ public abstract class PlaywrightBrowserLauncher {
         logger.info("Opening page with url: " + url + " ...");
 
         page.navigate(url);
-    }
-
-    public BrowserContext getBrowserContext() {
-
-        return browserContext;
-    }
-
-    public Page getPage() {
-
-        return page;
-    }
-
-    public Browser getBrowser() {
-
-        return browser;
     }
 
     public void close() {
