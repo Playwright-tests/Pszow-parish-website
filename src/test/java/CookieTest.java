@@ -5,7 +5,7 @@ import org.testng.SkipException;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.base.BaseTest;
-import qa.enums.URLs;
+import qa.support.URLs;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -21,7 +21,7 @@ public class CookieTest extends BaseTest {
     @BeforeMethod
     public void init() {
 
-        goToPage(URLs.HOME_PAGE.getName());
+        goToPage(URLs.HOME_PAGE);
     }
 
     private List<Cookie> getCookies() {
