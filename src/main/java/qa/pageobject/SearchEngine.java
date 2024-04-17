@@ -2,19 +2,24 @@ package qa.pageobject;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import lombok.Getter;
 import qa.base.BasePage;
 
 public class SearchEngine extends BasePage {
 
     private final String SEARCH_FIELD_SELECTOR = "#ocean-search-form-1";
+    @Getter
     private final Locator icon;
+    @Getter
     private final Locator searchField;
+
+
     public SearchEngine(Page page) {
 
         super(page);
 
         icon = page.locator(".search-toggle-li");
-        searchField = page.locator("#ocean-search-form-1");
+        searchField = page.locator(SEARCH_FIELD_SELECTOR);
     }
 
     @io.qameta.allure.Step("Click the search engine icon")
