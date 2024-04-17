@@ -12,7 +12,7 @@ import qa.enums.URLs;
 import qa.pageobject.Header;
 
 @Epic("E2E")
-@Feature("The logo link")
+@Feature("The logo")
 public class LogoTest extends BaseTest {
 
     private Header header;
