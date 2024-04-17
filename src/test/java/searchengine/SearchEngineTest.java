@@ -55,7 +55,6 @@ public class SearchEngineTest extends BaseTest {
         WaitForSelector.hidden(getPage(), searchEngine.getSearchFieldSelector());
     }
 
-
     @Test
     @Tag("Header")
     @Tag("Search engine")
@@ -68,6 +67,7 @@ public class SearchEngineTest extends BaseTest {
     public void inputTextVerification() {
 
         String text = "Example";
+        Allure.parameter("Text", text);
         searchEngine.clickIcon();
         searchEngine.setPhrase(text);
 
