@@ -1,68 +1,79 @@
 package qa.pageobject;
 
+import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import lombok.Getter;
 
+@Getter
 public class MainMenu extends Menu {
 
-    private final String ANNOUNCEMENTS_SELECTOR = "menu-item-24562";
-    private final String INTENTIONS_SELECTOR = "menu-item-1458";
-    private final String FUNERALS_SELECTOR = "menu-item-13836";
-    private final String STEWARDS_SELECTOR = "menu-item-19387";
-    private final String PRIESTS_SELECTOR = "menu-item-1466";
-    private final String CONFESSION_SELECTOR = "menu-item-18889";
-    private final String OFFICE_SELECTOR = "menu-item-24859";
+    private final Locator announcementLink;
+    private final Locator intentionsLink;
+    private final Locator funeralsLink;
+    private final Locator stewardsLink;
+    private final Locator priestsLink;
+    private final Locator confessionLink;
+    private final Locator officeLink;
 
     public MainMenu(Page page) {
 
         super(page);
+
+        announcementLink = page.locator("#menu-item-24562");
+        intentionsLink = page.locator("#menu-item-1458");
+        funeralsLink = page.locator("#menu-item-13836");
+        stewardsLink = page.locator("#menu-item-19387");
+        priestsLink = page.locator("#menu-item-1466");
+        confessionLink = page.locator("#menu-item-18889");
+        officeLink = page.locator("#menu-item-24859");
     }
 
     @io.qameta.allure.Step("Click the \"Ogłoszenia duszpasterskie\" link")
     @io.qase.api.annotation.Step("Click the \"Ogłoszenia duszpasterskie\" link")
     public void clickAnnouncementsLink() {
 
-        clickLink(ANNOUNCEMENTS_SELECTOR);
+        announcementLink.click();
     }
 
     @io.qameta.allure.Step("Click the \"Intencje mszalne\" link")
     @io.qase.api.annotation.Step("Click the \"Intencje mszalne\" link")
     public void clickIntentionsLink() {
 
-        clickLink(INTENTIONS_SELECTOR);
+        intentionsLink.click();
     }
 
     @io.qameta.allure.Step("Click the\"Pogrzeby\" link")
     @io.qase.api.annotation.Step("Click the\"Pogrzeby\" link")
     public void clickFuneralsLink() {
 
-        clickLink(FUNERALS_SELECTOR);
+        funeralsLink.click();
     }
 
     @io.qameta.allure.Step("Click the \"Szafarze\" link")
     @io.qase.api.annotation.Step("Click the \"Szafarze\" link")
     public void clickStewardsLink() {
 
-        clickLink(STEWARDS_SELECTOR);
+        stewardsLink.click();
     }
 
     @io.qameta.allure.Step("Click the \"Duszpasterze\" link")
     @io.qase.api.annotation.Step("Click the \"Duszpasterze\" link")
     public void clickPriestsLink() {
 
-        clickLink(PRIESTS_SELECTOR);
+        priestsLink.click();
     }
 
     @io.qameta.allure.Step("Click the \"Spowiedź\" link")
     @io.qase.api.annotation.Step("Click the \"Spowiedź\" link")
     public void clickConfessionLink() {
 
-        clickLink(CONFESSION_SELECTOR);
+        confessionLink.click();
     }
 
     @io.qameta.allure.Step("Click the \"Kancelaria\" link")
     @io.qase.api.annotation.Step("Click the \"Kancelaria\" link")
     public void clickOfficeLink() {
 
-        clickLink(OFFICE_SELECTOR);
+        officeLink.click();
     }
 }
