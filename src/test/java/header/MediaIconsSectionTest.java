@@ -25,7 +25,7 @@ public class MediaIconsSectionTest extends BaseTest {
     @BeforeMethod
     public void create() {
 
-        goToPage(URLs.BASE_URL.getName());
+        goToPage(URLs.HOME_PAGE);
         header = new Header(getPage());
     }
 
@@ -45,7 +45,7 @@ public class MediaIconsSectionTest extends BaseTest {
     @QaseTitle("The Facebook icon")
     public void facebookIcon() {
 
-        actions(MediaIconsSection::clickFacebookIcon, URLs.FACEBOOK_PAGE.getName());
+        actions(MediaIconsSection::clickFacebookIcon, URLs.FACEBOOK_PAGE);
     }
 
     @Test
@@ -55,6 +55,6 @@ public class MediaIconsSectionTest extends BaseTest {
     @QaseTitle("The Youtube icon")
     public void youtubeIcon() {
 
-        actions(MediaIconsSection::clickYoutubeIcon, URLs.YOUTUBE_PAGE.getName());
+        actions(MediaIconsSection::clickYoutubeIcon, URLs.YOUTUBE_PAGE);
     }
 }
