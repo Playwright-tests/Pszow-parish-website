@@ -1,16 +1,20 @@
 package qa.pageobject;
 
+import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import lombok.Getter;
 import qa.base.BasePage;
 
+@Getter
 public class Header extends BasePage {
 
-    private final String LOGO_SELECTOR = ".custom-logo-link";
-    private MediaIconsSection mediaIconsSection;
+    private final Locator logo;
+    private final MediaIconsSection mediaIconsSection;
 
     public Header(Page page) {
 
         super(page);
+        logo = page.locator(".custom-logo-link");
         mediaIconsSection = new MediaIconsSection(page);
     }
 
@@ -18,11 +22,6 @@ public class Header extends BasePage {
     @io.qase.api.annotation.Step("Click the logo")
     public void clickLogo() {
 
-        getPage().locator(LOGO_SELECTOR).click();
-    }
-
-    public MediaIconsSection getMediaIconsSection() {
-
-        return mediaIconsSection;
+        logo.click();
     }
 }

@@ -1,5 +1,8 @@
-package qa.enums;
+package qa.support;
 
+import lombok.Getter;
+
+@Getter
 public enum BrowserType {
 
     CHROME("chrome"),
@@ -12,10 +15,4 @@ public enum BrowserType {
 
         this.name = name;
     }
-
-    public String getName() {
-
-        return name;
-    }
-
 }
