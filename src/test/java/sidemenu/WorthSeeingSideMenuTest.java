@@ -3,6 +3,7 @@ package sidemenu;
 import io.qameta.allure.*;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
+import org.junit.jupiter.api.Tag;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -34,6 +35,10 @@ public class WorthSeeingSideMenuTest extends BaseTest {
     }
 
     @Test(priority = 1)
+    @Tag("Links")
+    @Tag("Side menu")
+    @Owner("Paweł Aksman")
+    @Link(name = "Home page", url = URLs.HOME_PAGE)
     @Severity(SeverityLevel.NORMAL)
     @Description("The \"Litania do Pani Uśmiechniętej\" link")
     @QaseId(35)
@@ -44,6 +49,10 @@ public class WorthSeeingSideMenuTest extends BaseTest {
     }
 
     @Test(priority = 2)
+    @Tag("Links")
+    @Tag("Side menu")
+    @Owner("Paweł Aksman")
+    @Link(name = "Home page", url = URLs.HOME_PAGE)
     @Severity(SeverityLevel.CRITICAL)
     @Description("The \"Regulamin cmentarza\" link")
     @QaseId(36)
@@ -54,6 +63,10 @@ public class WorthSeeingSideMenuTest extends BaseTest {
     }
 
     @Test(priority = 3)
+    @Tag("Links")
+    @Tag("Side menu")
+    @Owner("Paweł Aksman")
+    @Link(name = "Home page", url = URLs.HOME_PAGE)
     @Severity(SeverityLevel.MINOR)
     @Description("The \"Delegat ds. ochrony dzieci i młodzieży\" link")
     @QaseId(37)

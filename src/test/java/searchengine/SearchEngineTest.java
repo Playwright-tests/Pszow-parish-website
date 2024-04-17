@@ -3,6 +3,7 @@ package searchengine;
 import io.qameta.allure.*;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
+import org.junit.jupiter.api.Tag;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -17,13 +18,14 @@ import qa.support.WaitForSelector;
 @Epic("E2E")
 @Feature("Search engine")
 public class SearchEngineTest extends BaseTest {
+
     private SearchEngine searchEngine;
     private SearchResultsPage searchResultsPage;
 
     @BeforeMethod
     public void create() {
 
-        goToPage(URLs.BASE_URL.getName());
+        goToPage(URLs.HOME_PAGE);
 
         searchEngine = new SearchEngine(getPage());
         searchResultsPage = new SearchResultsPage(getPage());
@@ -37,6 +39,10 @@ public class SearchEngineTest extends BaseTest {
     }
 
     @Test(priority = 1)
+    @Tag("Header")
+    @Tag("Search engine")
+    @Owner("Paweł Aksman")
+    @Link(name = "Home page", url = URLs.HOME_PAGE)
     @Severity(SeverityLevel.CRITICAL)
     @Description("The search field visibility")
     @QaseId(40)
@@ -51,6 +57,10 @@ public class SearchEngineTest extends BaseTest {
 
 
     @Test
+    @Tag("Header")
+    @Tag("Search engine")
+    @Owner("Paweł Aksman")
+    @Link(name = "Home page", url = URLs.HOME_PAGE)
     @Severity(SeverityLevel.CRITICAL)
     @Description("Text input verification")
     @QaseId(41)
@@ -65,12 +75,17 @@ public class SearchEngineTest extends BaseTest {
     }
 
     @Test(priority = 2, dataProvider = DataProviderNames.CORRECT, dataProviderClass = DataProviders.class)
+    @Tag("Header")
+    @Tag("Search engine")
+    @Owner("Paweł Aksman")
+    @Link(name = "Home page", url = URLs.HOME_PAGE)
     @Severity(SeverityLevel.CRITICAL)
     @Description("Searching with a correct phrase")
     @QaseId(42)
     @QaseTitle("Searching with a correct phrase")
     public void correctPhrase(String phrase) {
 
+        Allure.parameter("Phrase", phrase);
         actions(phrase);
         getPage().waitForSelector(searchResultsPage.getPageHeaderTitleSelector());
         searchResultsPage.findArticles();
@@ -80,12 +95,17 @@ public class SearchEngineTest extends BaseTest {
     }
 
     @Test(priority = 3, dataProvider = DataProviderNames.INCORRECT, dataProviderClass = DataProviders.class)
+    @Tag("Header")
+    @Tag("Search engine")
+    @Owner("Paweł Aksman")
+    @Link(name = "Home page", url = URLs.HOME_PAGE)
     @Severity(SeverityLevel.CRITICAL)
     @Description("Searching with an incorrect phrase")
     @QaseId(43)
     @QaseTitle("Searching with an incorrect phrase")
     public void incorrectPhrase(String phrase) {
 
+        Allure.parameter("Phrase", phrase);
         actions(phrase);
         getPage().waitForSelector(searchResultsPage.getPageHeaderTitleSelector());
         searchResultsPage.findArticles();
