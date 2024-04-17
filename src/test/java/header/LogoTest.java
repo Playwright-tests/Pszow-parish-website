@@ -3,6 +3,7 @@ package header;
 import io.qameta.allure.*;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
+import org.junit.jupiter.api.Tag;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -19,11 +20,15 @@ public class LogoTest extends BaseTest {
     @BeforeMethod
     public void init() {
 
-        goToPage(URLs.PILGRIMAGES_PAGE.getName());
+        goToPage(URLs.PILGRIMAGES_PAGE);
         header = new Header(getPage());
     }
 
     @Test
+    @Tag("Header")
+    @Tag("Images")
+    @Owner("Paweł Aksman")
+    @Link(name = "The \"Pielegrzymki\" page", url = URLs.PILGRIMAGES_PAGE)
     @Severity(SeverityLevel.CRITICAL)
     @Description("The logo")
     @QaseId(1)
@@ -31,7 +36,7 @@ public class LogoTest extends BaseTest {
     public void clickingLogo() {
 
         header.clickLogo();
-        Assert.assertEquals(getPage().url(), URLs.BASE_URL.getName(),
+        Assert.assertEquals(getPage().url(), URLs.HOME_PAGE,
                 "The home page has not been opened");
     }
 }
