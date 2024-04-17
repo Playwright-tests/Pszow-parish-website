@@ -12,11 +12,6 @@ public class Listener implements ITestListener {
 
     private final Logger logger = LoggerFactory.getLogger(Listener.class);
 
-    private static String getTestMethodName(ITestResult iTestResult) {
-
-        return iTestResult.getMethod().getConstructorOrMethod().getName();
-    }
-
     @Attachment(value = "{0}", type = "text/plain")
     public static String saveTextLog(String message) {
 
@@ -26,7 +21,7 @@ public class Listener implements ITestListener {
     @Override
     public void onStart(ITestContext iTestContext) {
 
-        logger.info("SUITE: " + iTestContext.getSuite().getName());
+        logger.info("SUITE: {}", iTestContext.getSuite().getName());
     }
 
     @Override
@@ -38,27 +33,26 @@ public class Listener implements ITestListener {
     @Override
     public void onTestStart(ITestResult iTestResult) {
 
-        logger.info("Method: " + iTestResult.getMethod().toString());
+        logger.info("Method: {}", iTestResult.getMethod().toString());
     }
 
     @Override
     public void onTestSuccess(ITestResult iTestResult) {
 
-        logger.info("PASSED on method: " + iTestResult.getMethod());
-        saveTextLog(getTestMethodName(iTestResult) + "- passed");
+        logger.info("PASSED on method: {}", iTestResult.getMethod());
     }
 
     @Override
     public void onTestFailure(ITestResult iTestResult) {
 
-        logger.error("FAILED on method: " + iTestResult.getMethod());
-        saveTextLog(getTestMethodName(iTestResult) + "- failed");
+        logger.error("FAILED on method: {}", iTestResult.getMethod());
+        saveTextLog(iTestResult.getThrowable().getMessage());
     }
 
     @Override
     public void onTestSkipped(ITestResult iTestResult) {
 
-        logger.info("SKIPPED on method: " + iTestResult.getMethod());
-        saveTextLog(getTestMethodName(iTestResult) + "- skipped");
+        logger.info("SKIPPED on method: {}", iTestResult.getMethod());
+        saveTextLog(iTestResult.getThrowable().getMessage());
     }
 }
