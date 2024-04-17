@@ -32,7 +32,6 @@ public class MainMenuTest extends BaseTest {
 
         consumer.accept(mainMenu);
 
-
         Assert.assertEquals(getPage().url(), url,
                 "The page with address: " + url + " has not been opened");
     }
@@ -41,6 +40,7 @@ public class MainMenuTest extends BaseTest {
     @Tag("Links")
     @Tag("Main menu")
     @Owner("Paweł Aksman")
+    @Link(name = "Home page", url = URLs.HOME_PAGE)
     @Severity(SeverityLevel.CRITICAL)
     @Description("The \"Ogłoszenia duszpasterskie\" link")
     @QaseId(5)
@@ -55,6 +55,7 @@ public class MainMenuTest extends BaseTest {
     @Tag("Links")
     @Tag("Main menu")
     @Owner("Paweł Aksman")
+    @Link(name = "Home page", url = URLs.HOME_PAGE)
     @Severity(SeverityLevel.CRITICAL)
     @Description("The \"Intencje mszalne\" link")
     @QaseId(6)
@@ -69,6 +70,7 @@ public class MainMenuTest extends BaseTest {
     @Tag("Links")
     @Tag("Main menu")
     @Owner("Paweł Aksman")
+    @Link(name = "Home page", url = URLs.HOME_PAGE)
     @Severity(SeverityLevel.CRITICAL)
     @Description("The \"Pogrzeby\" link")
     @QaseId(7)
@@ -83,6 +85,7 @@ public class MainMenuTest extends BaseTest {
     @Tag("Links")
     @Tag("Main menu")
     @Owner("Paweł Aksman")
+    @Link(name = "Home page", url = URLs.HOME_PAGE)
     @Severity(SeverityLevel.MINOR)
     @Description("The \"Szafarze\" link")
     @QaseId(8)
@@ -97,6 +100,7 @@ public class MainMenuTest extends BaseTest {
     @Tag("Links")
     @Tag("Main menu")
     @Owner("Paweł Aksman")
+    @Link(name = "Home page", url = URLs.HOME_PAGE)
     @Severity(SeverityLevel.CRITICAL)
     @Description("The \"Duszpasterze\" link")
     @QaseId(9)
@@ -111,6 +115,7 @@ public class MainMenuTest extends BaseTest {
     @Tag("Links")
     @Tag("Main menu")
     @Owner("Paweł Aksman")
+    @Link(name = "Home page", url = URLs.HOME_PAGE)
     @Severity(SeverityLevel.CRITICAL)
     @Description("The \"Spowiedź\" link")
     @QaseId(10)
@@ -125,6 +130,7 @@ public class MainMenuTest extends BaseTest {
     @Tag("Links")
     @Tag("Main menu")
     @Owner("Paweł Aksman")
+    @Link(name = "Home page", url = URLs.HOME_PAGE)
     @Severity(SeverityLevel.CRITICAL)
     @Description("The \"Kancelaria\" link")
     @QaseId(11)
