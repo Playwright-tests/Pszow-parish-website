@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import qa.base.BaseTest;
 import qa.models.ItemData;
 import qa.dataprovider.DataProviders;
-import qa.enums.URLs;
+import qa.support.URLs;
 import qa.pageobject.PhotoGalleryPage;
 import qa.support.DataProviderNames;
 import qa.support.WaitForSelector;

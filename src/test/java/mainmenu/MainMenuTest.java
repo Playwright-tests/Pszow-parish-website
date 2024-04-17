@@ -7,7 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import qa.base.BaseTest;
 import org.testng.annotations.Test;
-import qa.enums.URLs;
+import qa.support.URLs;
 import io.qameta.allure.*;
 import qa.pageobject.MainMenu;
 import qa.support.AllureAttachments;

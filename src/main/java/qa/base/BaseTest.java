@@ -7,7 +7,7 @@ import org.testng.annotations.*;
 import qa.support.JsonFileReader;
 import qa.playwright.PlaywrightBrowserLauncher;
 import qa.playwright.PlaywrightProvider;
-import qa.enums.BrowserType;
+import qa.support.BrowserType;
 
 import java.io.IOException;
 

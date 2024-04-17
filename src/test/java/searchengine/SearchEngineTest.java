@@ -11,7 +11,7 @@ import qa.base.BaseTest;
 import qa.pageobject.SearchEngine;
 import qa.pageobject.SearchResultsPage;
 import qa.dataprovider.DataProviders;
-import qa.enums.URLs;
+import qa.support.URLs;
 import qa.support.DataProviderNames;
 import qa.support.WaitForSelector;
 

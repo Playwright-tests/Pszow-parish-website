@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import qa.base.BaseTest;
 import qa.pageobject.Header;
 import qa.pageobject.MediaIconsSection;
-import qa.enums.URLs;
+import qa.support.URLs;
 
 import java.util.function.Consumer;
 

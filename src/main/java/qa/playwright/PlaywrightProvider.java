@@ -1,7 +1,7 @@
 package qa.playwright;
 
 import org.reflections.Reflections;
-import qa.enums.BrowserType;
+import qa.support.BrowserType;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Set;

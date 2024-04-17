@@ -9,7 +9,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.base.BaseTest;
 import qa.pageobject.AboutSideMenu;
-import qa.enums.URLs;
+import qa.support.URLs;
 
 import java.util.function.Consumer;
 
