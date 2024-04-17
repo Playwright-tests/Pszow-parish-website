@@ -3,6 +3,7 @@ package sidemenu;
 import io.qameta.allure.*;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
+import org.junit.jupiter.api.Tag;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -21,7 +22,7 @@ public class SacramentsSideMenuTest extends BaseTest {
     @BeforeMethod
     public void create() {
 
-        goToPage(URLs.BASE_URL.getName());
+        goToPage(URLs.HOME_PAGE);
 
         sacramentsSideMenu = new SacramentsSideMenu(getPage());
     }
@@ -35,42 +36,58 @@ public class SacramentsSideMenuTest extends BaseTest {
     }
 
     @Test(priority = 1)
+    @Tag("Links")
+    @Tag("Side menu")
+    @Owner("Paweł Aksman")
+    @Link(name = "Home page", url = URLs.HOME_PAGE)
     @Severity(SeverityLevel.CRITICAL)
     @Description("The \"Chrzest\" link")
     @QaseId(20)
     @QaseTitle("The \"Chrzest\" link")
     public void christeningLink() {
 
-        actions(SacramentsSideMenu::clickChristeningLink, URLs.CHRISTENING_PAGE.getName());
+        actions(SacramentsSideMenu::clickChristeningLink, URLs.CHRISTENING_PAGE);
     }
 
     @Test(priority = 2)
-    @Severity(SeverityLevel.NORMAL)
+    @Tag("Links")
+    @Tag("Side menu")
+    @Owner("Paweł Aksman")
+    @Link(name = "Home page", url = URLs.HOME_PAGE)
+    @Severity(SeverityLevel.CRITICAL)
     @Description("The \"Pierwsza Komunia\" link")
     @QaseId(21)
     @QaseTitle("The \"Pierwsza Komunia\" link")
     public void firstCommunionLink() {
 
-        actions(SacramentsSideMenu::clickFirstCommunionLink, URLs.FIRST_COMMUNION_PAGE.getName());
+        actions(SacramentsSideMenu::clickFirstCommunionLink, URLs.FIRST_COMMUNION_PAGE);
     }
 
     @Test(priority = 4)
-    @Severity(SeverityLevel.NORMAL)
+    @Tag("Links")
+    @Tag("Side menu")
+    @Owner("Paweł Aksman")
+    @Link(name = "Home page", url = URLs.HOME_PAGE)
+    @Severity(SeverityLevel.MINOR)
     @Description("The \"Bierzmowanie\" link")
     @QaseId(22)
     @QaseTitle("The \"Bierzmowanie\" link")
     public void confirmationLink() {
 
-        actions(SacramentsSideMenu::clickConfirmationLink, URLs.CONFIRMATION_PAGE.getName());
+        actions(SacramentsSideMenu::clickConfirmationLink, URLs.CONFIRMATION_PAGE);
     }
 
     @Test(priority = 3)
-    @Severity(SeverityLevel.NORMAL)
+    @Tag("Links")
+    @Tag("Side menu")
+    @Owner("Paweł Aksman")
+    @Link(name = "Home page", url = URLs.HOME_PAGE)
+    @Severity(SeverityLevel.CRITICAL)
     @Description("The \"Małżeństwo\" link")
     @QaseId(23)
     @QaseTitle("The \"Małżeństwo\" link")
     public void marriageLink() {
 
-        actions(SacramentsSideMenu::clickMarriageLink, URLs.MARRIAGE_PAGE.getName());
+        actions(SacramentsSideMenu::clickMarriageLink, URLs.MARRIAGE_PAGE);
     }
 }
