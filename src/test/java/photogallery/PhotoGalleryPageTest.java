@@ -34,7 +34,7 @@ public class PhotoGalleryPageTest extends BaseTest {
     @Link(name = "Home page", url = URLs.PHOTO_GALLERY)
     @Severity(SeverityLevel.CRITICAL)
     @Description("Expanding and collapsing the content of the photo gallery")
-    @QaseId(45)
+    @QaseId(44)
     @QaseTitle("Expanding and collapsing the content of the photo gallery")
     public void contentVisibility(ItemData itemData) {
 
